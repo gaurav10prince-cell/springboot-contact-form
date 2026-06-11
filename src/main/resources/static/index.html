@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Welcome to Our Company</h1>
+        <p>We provide innovative software solutions.</p>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+
+        <form action="http://localhost:8080/contact"
+              method="POST">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter Name"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                required>
+
+            <textarea
+                name="message"
+                placeholder="Enter Message"
+                required>
+            </textarea>
+
+            <button type="submit">
+                Submit
+            </button>
+
+        </form>
+    </section>
+
+</body>
+</html>
