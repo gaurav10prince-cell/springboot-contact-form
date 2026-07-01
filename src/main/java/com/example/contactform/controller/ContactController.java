@@ -1,12 +1,18 @@
 package com.example.contactform.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.contactform.entity.Contact;
+import com.example.contactform.repository.ContactRepository;
 
 @RestController
 public class ContactController {
+
+    @Autowired
+    private ContactRepository repository;
 
     @GetMapping("/test")
     public String test() {
@@ -19,11 +25,19 @@ public class ContactController {
             @RequestParam String email,
             @RequestParam String message) {
 
-        System.out.println("===== CONTACT FORM DATA =====");
-        System.out.println("Name: " + name);
-        System.out.println("Email: " + email);
-        System.out.println("Message: " + message);
+        Contact contact = new Contact();
 
-        return "Form Submitted Successfully!";
+        contact.setName(name);
+        contact.setEmail(email);
+        contact.setMessage(message);
+
+        repository.save(contact);
+
+        return "Form Submitted Successfully and Saved to Database!";
+    }
+
+    @GetMapping("/contacts")
+    public List<Contact> getAllContacts() {
+        return repository.findAll();
     }
 }
