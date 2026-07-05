@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Management Dashboard</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            margin:40px;
+        }
+
+        h1{
+            text-align:center;
+            color:#333;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:30px;
+            background:white;
+        }
+
+        th,td{
+            border:1px solid #ddd;
+            padding:12px;
+            text-align:left;
+        }
+
+        th{
+            background:#007bff;
+            color:white;
+        }
+
+        tr:nth-child(even){
+            background:#f2f2f2;
+        }
+
+        tr:hover{
+            background:#ddd;
+        }
+
+    </style>
+
+</head>
+
+<body>
+	<a href="index.html">
+	    <button>Back to Contact Form</button>
+	</a>
+
+<h1>Contact Management Dashboard</h1>
+
+<table>
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+        </tr>
+
+    </thead>
+
+    <tbody id="contactTable">
+
+    </tbody>
+
+</table>
+<script>
+
+fetch("/contacts")
+.then(response => response.json())
+.then(data => {
+
+    let table = document.getElementById("contactTable");
+
+    data.forEach(contact => {
+
+        let row = `
+            <tr>
+                <td>${contact.id}</td>
+                <td>${contact.name}</td>
+                <td>${contact.email}</td>
+                <td>${contact.message}</td>
+            </tr>
+        `;
+
+        table.innerHTML += row;
+
+    });
+
+})
+.catch(error => console.log(error));
+
+</script>
+</body>
+</html>
