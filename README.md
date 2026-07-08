@@ -172,7 +172,7 @@ GitHub:
 https://github.com/gaurav10prince-cell
 
 LinkedIn:
-(Add your LinkedIn profile link here)
+https://www.linkedin.com/in/gaurav10pandey/
 
 ---
 
